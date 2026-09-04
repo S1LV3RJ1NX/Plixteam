@@ -11,6 +11,27 @@ Two pieces:
   messages. Audio and video go peer-to-peer over WebRTC and never touch the server, so a
   free-tier box is plenty.
 
+## Host your own
+
+Plixteam is free and self-hosted: you run the signalling server, so your watch parties stay
+yours. The extension is distributed as an unlisted Chrome Web Store item, but everything you
+need to run your own instance is here in this repo. The quickest paths:
+
+1. Stand up the server (below), on your own machine, a cheap VM, or a free tier.
+2. Expose it over TLS so browsers on `https://netflix.com` can reach it (`wss://...`).
+3. Install the extension, and in its **Advanced** settings paste your server address
+   (`wss://your-host/ws`). Share that address and a room code with whoever you watch with.
+
+Repo: https://github.com/S1LV3RJ1NX/Plixteam
+
+## Screenshots
+
+![Watch Netflix together with a built-in video call](assets/store/01-watch-together.png)
+
+![Start a party from the popup](assets/store/02-setup.png)
+
+![How it works in three steps](assets/store/03-how-it-works.png)
+
 ## Run the server
 
 ```bash

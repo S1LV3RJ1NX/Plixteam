@@ -3,3 +3,4 @@ __pycache__/
 node_modules/
 tests/fixture.mp4
 .DS_Store
+assets/store/node_modules

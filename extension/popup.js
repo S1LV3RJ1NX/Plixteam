@@ -9,9 +9,8 @@ chrome.storage.local.get([...FIELDS, "mediaGranted"], (stored) => {
   for (const field of FIELDS) {
     if (stored[field]) document.getElementById(field).value = stored[field];
   }
-  if (!document.getElementById("server").value) {
-    document.getElementById("server").value = "ws://localhost:8080/ws";
-  }
+  // No hardcoded server; the popup placeholder shows the expected format and
+  // whatever the user saved is loaded from storage above.
   if (!stored.mediaGranted) show("Tip: grant camera & mic once before joining.");
 });
 

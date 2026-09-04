@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 1280px;
+        height: 800px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(120% 120% at 80% 0%, #1c1119, #0a0a0d 70%);
+        font-family: "Netflix Sans", Helvetica, Arial, sans-serif;
+        color: #fff;
+      }
+      .brand {
+        color: #e50914;
+        font-weight: 800;
+        letter-spacing: 4px;
+        font-size: 16px;
+      }
+      h1 {
+        font-size: 44px;
+        font-weight: 800;
+        margin: 10px 0 46px;
+      }
+      .steps {
+        display: flex;
+        gap: 26px;
+      }
+      .step {
+        width: 300px;
+        background: #16161c;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 28px 24px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+      }
+      .num {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        background: #e50914;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 800;
+        margin-bottom: 18px;
+      }
+      .step h2 {
+        font-size: 21px;
+        margin: 0 0 10px;
+      }
+      .step p {
+        margin: 0;
+        color: #c9c9d2;
+        font-size: 15px;
+        line-height: 1.5;
+      }
+      .step code {
+        color: #ff9aa2;
+        font-size: 14px;
+      }
+      .foot {
+        margin-top: 40px;
+        color: #9a9aa5;
+        font-size: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="brand">PLIXTEAM</div>
+    <h1>Movie night in three steps</h1>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h2>Point to a server</h2>
+        <p>Self-host the tiny signalling server, then paste <code>wss://your-host/ws</code> into the extension once.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h2>Start a party</h2>
+        <p>Open any Netflix title, pick a room code, and share it with the person you want to watch with.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h2>Watch and talk</h2>
+        <p>Playback stays in sync while you see and hear each other in the built-in video call.</p>
+      </div>
+    </div>
+    <div class="foot">Free and open source · github.com/S1LV3RJ1NX/Plixteam</div>
+  </body>
+</html>

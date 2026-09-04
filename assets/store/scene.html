@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../extension/overlay.css" />
+    <link rel="stylesheet" href="../../extension/call.css" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 1280px;
+        height: 800px;
+        overflow: hidden;
+        font-family: "Netflix Sans", Helvetica, Arial, sans-serif;
+      }
+      /* Fake Netflix watch scene: cinematic gradient + title, no real IP. */
+      .scene {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(120% 80% at 30% 20%, #3a1c2b 0%, #140b12 55%, #000 100%),
+          #000;
+      }
+      .scene::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(transparent 55%, rgba(0, 0, 0, 0.85));
+      }
+      .title {
+        position: absolute;
+        left: 64px;
+        bottom: 120px;
+        color: #fff;
+        z-index: 2;
+      }
+      .title .kicker {
+        color: #e50914;
+        font-weight: 800;
+        letter-spacing: 3px;
+        font-size: 14px;
+      }
+      .title h1 {
+        margin: 8px 0 6px;
+        font-size: 58px;
+        font-weight: 800;
+        text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+      }
+      .title p {
+        margin: 0;
+        max-width: 520px;
+        color: #d8d8de;
+        font-size: 15px;
+        line-height: 1.5;
+      }
+      /* Netflix-style scrubber */
+      .scrubber {
+        position: absolute;
+        left: 64px;
+        right: 64px;
+        bottom: 72px;
+        height: 4px;
+        border-radius: 3px;
+        background: rgba(255, 255, 255, 0.25);
+        z-index: 2;
+      }
+      .scrubber i {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 41%;
+        background: #e50914;
+        border-radius: 3px;
+      }
+      .scrubber i::after {
+        content: "";
+        position: absolute;
+        right: -6px;
+        top: -4px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #e50914;
+      }
+      .time {
+        position: absolute;
+        right: 64px;
+        bottom: 44px;
+        color: #cfcfd6;
+        font-size: 13px;
+        z-index: 2;
+      }
+
+      /* Pin the real overlay bottom-right, expanded */
+      #plixteam-root {
+        right: 28px;
+        bottom: 28px;
+        width: 300px;
+      }
+      #plixteam-frame-mock {
+        height: 388px;
+        background: #101014;
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+      #plixteam-frame-mock .tiles {
+        gap: 8px;
+      }
+      /* Fake camera tiles: soft gradient + initials, no real faces */
+      .cam {
+        background: linear-gradient(155deg, var(--a), var(--b));
+        aspect-ratio: 16 / 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .cam .avatar {
+        width: 66px;
+        height: 66px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.18);
+        border: 2px solid rgba(255, 255, 255, 0.55);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scene"></div>
+    <div class="title">
+      <div class="kicker">NOW PLAYING TOGETHER</div>
+      <h1>Midnight in Amsterdam</h1>
+      <p>Watch in sync with the people you love, and see and hear each other while you do it.</p>
+    </div>
+    <div class="scrubber"><i></i></div>
+    <div class="time">1:12:04 &nbsp;·&nbsp; in sync with Aisha</div>
+
+    <div id="plixteam-root">
+      <div id="plixteam-bar">
+        <span id="plixteam-title">Plixteam · movie-night</span>
+        <span class="plixteam-spacer"></span>
+        <button title="Collapse">–</button>
+        <button title="Leave party">×</button>
+      </div>
+      <div id="plixteam-frame-mock">
+        <div class="status">Connected · 2 in room</div>
+        <div class="tiles">
+          <div class="tile cam speaking" style="--a:#2b5876;--b:#4e4376">
+            <div class="avatar">P</div>
+            <span class="label">You</span>
+          </div>
+          <div class="tile cam" style="--a:#7b4397;--b:#dc2430">
+            <div class="avatar">A</div>
+            <span class="label">Aisha</span>
+          </div>
+        </div>
+        <div class="controls">
+          <button class="ctrl on">Mic</button>
+          <button class="ctrl on">Cam</button>
+          <button class="ctrl danger">Leave</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

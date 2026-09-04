@@ -3,7 +3,7 @@
 // this worker only handles storage defaults and cross-tab commands.
 
 const DEFAULTS = {
-  server: "ws://localhost:8080/ws",
+  server: "",
   room: "",
   name: "Me",
   turnUrl: "",

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 1280px;
+        height: 800px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 70px;
+        background: radial-gradient(120% 120% at 20% 10%, #1b1b22, #0a0a0d 70%);
+        font-family: "Netflix Sans", Helvetica, Arial, sans-serif;
+        color: #fff;
+      }
+      .copy {
+        max-width: 430px;
+      }
+      .copy .brand {
+        color: #e50914;
+        font-weight: 800;
+        letter-spacing: 3px;
+        font-size: 15px;
+      }
+      .copy h1 {
+        font-size: 46px;
+        line-height: 1.1;
+        margin: 12px 0 18px;
+        font-weight: 800;
+      }
+      .copy li {
+        list-style: none;
+        font-size: 18px;
+        color: #d6d6dd;
+        margin: 12px 0;
+        padding-left: 30px;
+        position: relative;
+      }
+      .copy li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 7px;
+        width: 14px;
+        height: 14px;
+        border-radius: 4px;
+        background: #e50914;
+      }
+      .device {
+        border-radius: 20px;
+        background: #17171c;
+        padding: 14px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      iframe {
+        width: 300px;
+        height: 470px;
+        border: 0;
+        border-radius: 10px;
+        background: #101014;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="copy">
+      <div class="brand">PLIXTEAM</div>
+      <h1>Netflix, together. Free.</h1>
+      <ul>
+        <li>Playback stays perfectly in sync</li>
+        <li>Built-in video &amp; voice call</li>
+        <li>Just share a room code</li>
+        <li>No subscription, no paywall</li>
+      </ul>
+    </div>
+    <div class="device">
+      <iframe src="../../extension/popup.html"></iframe>
+    </div>
+  </body>
+</html>
