@@ -1,7 +1,7 @@
 # Chrome Web Store listing
 
 ## Name
-Plixteam — Netflix watch party with free voice & video
+Plixteam: Netflix watch party with free voice & video
 
 ## Summary (max 132 chars)
 Watch Netflix in sync with friends and talk over built-in video and voice. Free, open source, no paywall.
