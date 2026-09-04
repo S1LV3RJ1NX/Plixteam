@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 440px;
+        height: 280px;
+        overflow: hidden;
+        font-family: "Netflix Sans", Helvetica, Arial, sans-serif;
+        color: #fff;
+      }
+      .tile {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(120% 120% at 85% 15%, #3a1520, #140b12 55%, #060608 100%);
+        padding: 30px 32px;
+        box-sizing: border-box;
+      }
+      .brand {
+        color: #e50914;
+        font-weight: 800;
+        letter-spacing: 3px;
+        font-size: 13px;
+      }
+      h1 {
+        font-size: 33px;
+        line-height: 1.08;
+        font-weight: 800;
+        margin: 8px 0 0;
+      }
+      p {
+        margin: 12px 0 0;
+        color: #d3d3db;
+        font-size: 13px;
+        max-width: 205px;
+        line-height: 1.45;
+      }
+      .free {
+        position: absolute;
+        left: 32px;
+        bottom: 26px;
+        background: #e50914;
+        color: #fff;
+        font-weight: 700;
+        font-size: 12px;
+        padding: 6px 12px;
+        border-radius: 20px;
+      }
+      /* Mini call panel on the right */
+      .panel {
+        position: absolute;
+        right: 26px;
+        bottom: 26px;
+        width: 150px;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #101014;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+      }
+      .panel .bar {
+        font-size: 10px;
+        font-weight: 700;
+        padding: 6px 8px;
+        background: #17171c;
+      }
+      .cams {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        gap: 4px;
+        padding: 6px;
+      }
+      .cam {
+        height: 56px;
+        border-radius: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .cam .av {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tile">
+      <div class="brand">PLIXTEAM</div>
+      <h1>Netflix,<br />together.</h1>
+      <p>Synced playback with a built-in video and voice call. No paywall.</p>
+      <div class="free">Free &amp; open source</div>
+
+      <div class="panel">
+        <div class="bar">Plixteam · movie-night</div>
+        <div class="cams">
+          <div class="cam" style="background: linear-gradient(155deg, #2b5876, #4e4376)">
+            <div class="av">P</div>
+          </div>
+          <div class="cam" style="background: linear-gradient(155deg, #7b4397, #dc2430)">
+            <div class="av">A</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

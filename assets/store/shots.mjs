@@ -26,4 +26,11 @@ for (const { file, out } of shots) {
   console.log("wrote", out);
 }
 
+// Small promo tile has its own dimensions (Chrome Web Store: 440x280).
+await page.setViewport({ width: 440, height: 280, deviceScaleFactor: 1 });
+await page.goto(pathToFileURL(path.join(here, "promo.html")).href, { waitUntil: "networkidle0" });
+await new Promise((r) => setTimeout(r, 300));
+await page.screenshot({ path: path.join(here, "promo-440x280.png"), clip: { x: 0, y: 0, width: 440, height: 280 } });
+console.log("wrote promo-440x280.png");
+
 await browser.close();
