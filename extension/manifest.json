@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Plixteam: Netflix watch party with free voice & video",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Sync Netflix playback with friends and talk over free WebRTC voice/video. No paywall, self-hosted signaling.",
   "permissions": ["storage", "tabs"],
   "host_permissions": ["https://*.netflix.com/*"],
