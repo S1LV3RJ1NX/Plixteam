@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Plixteam — Netflix watch party with free voice & video",
+  "version": "0.1.0",
+  "description": "Sync Netflix playback with friends and talk over free WebRTC voice/video. No paywall, self-hosted signaling.",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["https://*.netflix.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Plixteam"
+  },
+  "options_page": "permissions.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.netflix.com/*"],
+      "js": ["player-bridge.js"],
+      "world": "MAIN",
+      "run_at": "document_start",
+      "all_frames": false
+    },
+    {
+      "matches": ["https://*.netflix.com/*"],
+      "js": ["content.js"],
+      "css": ["overlay.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["call.html", "call.js", "call.css"],
+      "matches": ["https://*.netflix.com/*"]
+    }
+  ]
+}

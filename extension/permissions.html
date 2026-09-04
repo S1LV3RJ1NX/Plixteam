@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Plixteam — camera &amp; mic access</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #101014;
+        color: #f5f5f7;
+        font-family: Helvetica, Arial, sans-serif;
+      }
+      .card {
+        max-width: 420px;
+        padding: 28px;
+        background: #17171c;
+        border-radius: 14px;
+        text-align: center;
+      }
+      h1 {
+        font-size: 20px;
+        margin: 0 0 10px;
+      }
+      p {
+        color: #b0b0ba;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      button {
+        margin-top: 16px;
+        padding: 11px 20px;
+        border: 0;
+        border-radius: 9px;
+        background: #e50914;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      video {
+        width: 220px;
+        border-radius: 10px;
+        margin-top: 16px;
+        background: #000;
+      }
+      #result {
+        margin-top: 12px;
+        font-size: 13px;
+      }
+      .ok {
+        color: #4ade80;
+      }
+      .bad {
+        color: #ff7a7a;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Allow camera &amp; microphone</h1>
+      <p>
+        Chrome only lets the watch-party overlay use your camera and mic after you approve it
+        once from this extension page. Click below and choose <strong>Allow</strong>.
+      </p>
+      <button id="grant">Allow camera &amp; mic</button>
+      <div id="result"></div>
+      <video id="preview" autoplay playsinline muted></video>
+    </div>
+    <script src="permissions.js"></script>
+  </body>
+</html>

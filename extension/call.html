@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="call.css" />
+  </head>
+  <body>
+    <div id="status" class="status">Connecting…</div>
+    <div id="tiles" class="tiles">
+      <div class="tile" id="local-tile">
+        <video id="local-video" autoplay playsinline muted></video>
+        <span class="label">You</span>
+      </div>
+    </div>
+    <div class="controls">
+      <button id="mic" class="ctrl on" title="Mute mic">Mic</button>
+      <button id="cam" class="ctrl on" title="Turn camera off">Cam</button>
+      <button id="leave" class="ctrl danger" title="Leave party">Leave</button>
+    </div>
+    <script src="call.js"></script>
+  </body>
+</html>

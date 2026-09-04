@@ -1,0 +1,36 @@
+# Signalling + a TURN relay on one box.
+#
+# TURN is what saves the call when both of you are behind carrier-grade NAT or
+# a mobile hotspot and a direct peer-to-peer path can't be found. Set
+# EXTERNAL_IP to the server's public address, TURN_USER / TURN_PASS to
+# anything you like, then put turn:<host>:3478 and those credentials into the
+# extension popup under Advanced.
+#
+#   EXTERNAL_IP=203.0.113.10 TURN_USER=plix TURN_PASS=change-me docker compose up -d
+
+services:
+  signaling:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      MAX_ROOM_SIZE: "6"
+
+  coturn:
+    image: coturn/coturn:latest
+    restart: unless-stopped
+    network_mode: host
+    command: >
+      -n
+      --listening-port=3478
+      --min-port=50000
+      --max-port=50100
+      --realm=plixteam
+      --lt-cred-mech
+      --user=${TURN_USER:-plix}:${TURN_PASS:-change-me}
+      --external-ip=${EXTERNAL_IP:-127.0.0.1}
+      --no-tls
+      --no-dtls
+      --no-multicast-peers
+      --log-file=stdout

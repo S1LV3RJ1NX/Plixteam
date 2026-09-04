@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: plixteam-signaling
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: MAX_ROOM_SIZE
+        value: "6"

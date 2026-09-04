@@ -1,0 +1,14 @@
+{
+  "name": "plixteam-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node e2e.mjs",
+    "test:pair": "VIEWERS=2 node e2e.mjs",
+    "test:turn": "node turn.mjs",
+    "fixture": "ffmpeg -v error -y -f lavfi -i testsrc=size=320x180:rate=15:duration=120 -pix_fmt yuv420p -c:v libx264 -movflags +faststart fixture.mp4"
+  },
+  "dependencies": {
+    "puppeteer": "^23.11.1"
+  }
+}
