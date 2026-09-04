@@ -55,12 +55,19 @@ function refreshLayout() {
 
 async function startMedia() {
   const attempts = [
-    { audio: true, video: { width: 320, height: 240, frameRate: 20 } },
+    {
+      audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
+      video: { width: { ideal: 640 }, height: { ideal: 480 }, frameRate: { ideal: 24, max: 30 } },
+    },
     { audio: true, video: false },
   ];
   for (const constraints of attempts) {
     try {
       localStream = await navigator.mediaDevices.getUserMedia(constraints);
+      // Tell the encoder to favour smooth motion over still sharpness, which
+      // keeps latency down under CPU pressure.
+      const vt = localStream.getVideoTracks()[0];
+      if (vt) vt.contentHint = "motion";
       localVideo.srcObject = localStream;
       if (!constraints.video) {
         setStatus("Mic only — no camera available");
@@ -115,11 +122,33 @@ function createPeer(peerId, peerName, polite) {
   };
 
   pc.onconnectionstatechange = () => {
-    if (pc.connectionState === "connected") setStatus(`Connected · ${peers.size + 1} in room`);
+    if (pc.connectionState === "connected") {
+      setStatus(`Connected · ${peers.size + 1} in room`);
+      tuneVideoSender(pc);
+    }
     if (pc.connectionState === "failed") pc.restartIce();
   };
 
   return entry;
+}
+
+// Cap the outgoing video so it adapts instead of piling up latency. Without a
+// ceiling, WebRTC keeps raising bitrate/resolution until the CPU or link can't
+// keep up and frames queue, which is the "video lags" symptom. balanced +
+// caps make it drop resolution/framerate gracefully and stay real-time.
+async function tuneVideoSender(pc) {
+  const sender = pc.getSenders().find((s) => s.track && s.track.kind === "video");
+  if (!sender) return;
+  try {
+    const params = sender.getParameters();
+    if (!params.encodings || !params.encodings.length) params.encodings = [{}];
+    params.encodings[0].maxBitrate = 500_000; // ~500 kbps is plenty for a face
+    params.encodings[0].maxFramerate = 24;
+    params.degradationPreference = "balanced";
+    await sender.setParameters(params);
+  } catch {
+    /* setParameters can race with renegotiation; ignore and let it retry next connect */
+  }
 }
 
 async function offerTo(peerId) {
